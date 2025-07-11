@@ -63,7 +63,9 @@ class CreateDomainCommand extends GeneratorCommand
                 "{$domainPrefix}/Actions" => ['Create' . $domainName . 'Action' => 'action', 'Update' . $domainName . 'Action' => 'action', 'Delete' . $domainName . 'Action' => 'action'],
                 "{$domainPrefix}/DataTransferObjects" => [$domainName . 'Data' => 'dto'],
                 "{$domainPrefix}/Models" => [$domainName => 'model'],
-                "{$domainPrefix}/Repositories" => [$domainName . 'Repository' => 'repository', 'Eloquent' . $domainName . 'Repository' => 'repository.eloquent'],
+                "{$domainPrefix}/Repositories" => [$domainName . 'RepositoryInterface' => 'repository', $domainName . 'Repository' => 'repository.eloquent'],
+//                 this is the old version
+//                "{$domainPrefix}/Repositories" => [$domainName . 'Repository' => 'repository', 'Eloquent' . $domainName . 'Repository' => 'repository.eloquent'],
                 "{$domainPrefix}/Services" => [$domainName . 'Service' => 'service'],
             ],
             'Application' => [

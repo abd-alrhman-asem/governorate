@@ -1,8 +1,7 @@
 <?php
-
+//todo
 namespace Database\factories\Attachment;
 
-use App\Domain\Attachment\Models\Attachment;
 use App\Domain\Complaint\Models\Complaint;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
