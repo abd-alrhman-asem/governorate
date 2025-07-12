@@ -26,6 +26,7 @@ class Complaint extends Model implements HasMedia
         'LocationLng',
         'LocationLat',
         'LocationText',
+        'status_id',
     ];
 
     public function registerMediaCollections(): void

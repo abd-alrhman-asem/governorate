@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
+            // when user deleted complaints archived
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('destination_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('category_id')->constrained('complaint_categories')->onDelete('cascade');
-            $table->foreignId('type_id')->nullable()->constrained('complaint_types')->onDelete('set null');
+            $table->foreignId('destination_id')->constrained('destinations')->onDelete('restrict');
+            $table->foreignId('category_id')->constrained('complaint_categories')->onDelete('restrict');
+            $table->foreignId('type_id')->nullable()->constrained('complaint_types')->onDelete('restrict');
+            $table->foreignId('status_id')->nullable()->constrained('complaint_statuses')->onDelete('restrict');
             $table->text('text');
             $table->string('title');
             $table->string('LocationText');

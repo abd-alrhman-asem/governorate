@@ -39,4 +39,5 @@ Route::prefix('complaints')->name('complaints.')->group(function () {
      * Full Route Name: 'complaints.show'
      */
     Route::get('/{complaint}', [ComplaintController::class, 'show'])->name('show');
+    Route::post('/search', [ComplaintController::class, 'search'])->name('show');
 });

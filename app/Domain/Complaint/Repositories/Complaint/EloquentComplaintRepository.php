@@ -36,4 +36,15 @@ class EloquentComplaintRepository implements ComplaintRepositoryInterface
             'LocationLng' => $complaintData->locationLng,
         ]);
     }
+
+    /**
+     * Search for a complaint based on provided criteria.
+     *
+     * @param array $criteria An associative array with potential keys: 'complaint_number', 'email', 'phone_number'.
+     * @return Complaint|null The found Complaint model instance, or null if not found.
+     */
+    public function getComplaintById($id): ?Complaint
+    {
+        return Complaint::find($id);
+    }
 }

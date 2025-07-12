@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1\Complaint;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Complaint\SearchComplaintRequest;
 use App\Http\Requests\Complaint\StoreComplaintRequest;
 use App\Domain\Complaint\Services\Complaint\ComplaintService;
 use Illuminate\Http\JsonResponse;
@@ -23,16 +24,7 @@ class ComplaintController extends Controller
      */
     public function store(StoreComplaintRequest $request)
     {
-        $complaint = $this->complaintService->createComplaint($request->toDto());
-//        if ($request->hasFile('attachments')) {
-//            $complaint->addMultipleMediaFromRequest(['attachments'])
-//                ->each(function ($fileAdder) {
-//                    $fileAdder->toMediaCollection(
-//                        'attachments',
-//                        'complaint_disk'
-//                    );
-//                });
-//        }
+        $this->complaintService->createComplaint($request->toDto());
         return success(msg: 'complaint stored successfully', statusCode: ResponseAlias::HTTP_CREATED);
     }
 
@@ -41,6 +33,11 @@ class ComplaintController extends Controller
         return success(
             data: $this->complaintService->getComplaintConfigs(),
         );
+    }
+
+    public  function search(SearchComplaintRequest $request)
+    {
+        $this->complaintService->searchComplaint($request->validated());
     }
 
 }
